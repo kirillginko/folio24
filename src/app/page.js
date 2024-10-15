@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 import Theme from "./components/theme/Theme";
 import Header from "./components/Header";
 import NoiseBackground from "./components/noise/NoiseBackground";
-import Design from "./components/Design";
+import Fluid from "./components/fluid/Fluid";
 import Footer from "./components/Footer";
 import React from "react";
 
@@ -28,10 +28,10 @@ export default function Home() {
 
   return (
     <div className={styles.pageContainer}>
+      <Fluid theme={resolvedTheme} />
       <main className={styles.contentWrap}>
         <Theme />
         <Header />
-        {/* <Design /> */}
         <NoiseBackground />
       </main>
       <Footer isVisible={isFooterVisible} />
