@@ -73,6 +73,7 @@
   color: var(--highlight-color);
   margin-bottom: 0.3rem;
   font-size: 0.9rem;
+  margin-left: 2.5rem;
 }
 
 .leftLinks p,
@@ -105,6 +106,9 @@
 
   .header {
     font-size: 2.5rem;
+  }
+
+  .leftLinks {
   }
 
   .leftLinks p {
