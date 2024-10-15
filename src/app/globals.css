@@ -1,5 +1,5 @@
 :root {
-  --theme-transition-duration: 0.7s;
+  --theme-transition-duration: 0.6s;
   /* Light theme variables */
   --background-light: #b67876;
   --foreground-light: #171717;
@@ -46,6 +46,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
+  overflow-x: hidden;
 }
 
 *,

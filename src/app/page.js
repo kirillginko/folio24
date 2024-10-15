@@ -6,10 +6,17 @@ import Theme from "./components/theme/Theme";
 import Header from "./components/Header";
 import NoiseBackground from "./components/noise/NoiseBackground";
 import Design from "./components/Design";
+import Footer from "./components/Footer";
+import React from "react";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
+
+  const toggleFooter = () => {
+    setIsFooterVisible(!isFooterVisible);
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -20,11 +27,21 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.page}>
-      <Theme />
-      <Header />
-      <Design />
-      <NoiseBackground />
+    <div className={styles.pageContainer}>
+      <main className={styles.contentWrap}>
+        <Theme />
+        <Header />
+        {/* <Design /> */}
+        <NoiseBackground />
+      </main>
+      <Footer isVisible={isFooterVisible} />
+      <button
+        className={styles.toggleButton}
+        onClick={toggleFooter}
+        aria-label={isFooterVisible ? "Hide Footer" : "Show Footer"}
+      >
+        {isFooterVisible ? "▼" : "▲"}
+      </button>
     </div>
   );
 }

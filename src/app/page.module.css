@@ -1,4 +1,4 @@
-.page {
+.pageContainer {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
   --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
@@ -11,26 +11,83 @@
   width: 100vw;
   background-color: var(--background);
   color: var(--foreground);
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.page h1 {
+.pageContainer h1 {
   font-family: var(--font-2197-heavy);
   line-height: 0.8;
   letter-spacing: -2px;
   color: var(--h1-color);
 }
 
-.page h2 {
+.pageContainer h2 {
   font-family: var(--font-block-2197);
   line-height: 0.8;
   letter-spacing: 4px;
   color: var(--h2-color);
 }
 
-.page p {
+.pageContainer p {
   font-family: var(--font-instructions);
   font-size: 1.1em;
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: var(--text-color);
+}
+
+.contentWrap {
+  flex: 1 0 auto;
+  padding-bottom: 60px; /* Space for the toggle button */
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.footerVisible {
+  transform: translateY(0);
+}
+
+.toggleButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--button-primary-hover, #383838);
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: background-color 0.3s ease;
+}
+
+.toggleButton:hover {
+  background-color: var(--button-secondary-hover, #f2f2f2);
+  color: var(--button-primary-hover, #383838);
+}
+
+/* If you want to add a subtle shadow */
+.toggleButton {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Add this if you're using Font Awesome or similar icon libraries */
+.toggleButton i {
+  line-height: 0;
 }
