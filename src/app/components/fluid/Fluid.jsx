@@ -7,18 +7,14 @@ import React, {
 } from "react";
 import dynamic from "next/dynamic";
 import styles from "../../styles/fluid.module.css";
-import { ripplesVs, ripplesFs, renderFs, renderVs } from "./Shaders";
+import { ripplesVs, ripplesFs, renderFs } from "./Shaders";
 import { useTheme } from "next-themes";
-
 const Curtains = dynamic(() => import("curtainsjs"), { ssr: false });
-
 const FluidBackground = forwardRef((props, ref) => {
   const canvasRef = useRef(null);
   const renderPassRef = useRef(null);
   const { theme, resolvedTheme } = useTheme();
   const [backgroundColor, setBackgroundColor] = useState([0, 0, 0]);
-  const transitionRef = useRef(0);
-
   useImperativeHandle(ref, () => ({
     changeRippleColor: (r, g, b) => {
       if (renderPassRef.current) {
@@ -30,7 +26,6 @@ const FluidBackground = forwardRef((props, ref) => {
       }
     },
   }));
-
   useEffect(() => {
     const getBackgroundColor = () => {
       const currentTheme = resolvedTheme || theme;
@@ -41,18 +36,14 @@ const FluidBackground = forwardRef((props, ref) => {
       const rgb = bgColor.match(/\d+/g).map(Number);
       return rgb.map((val) => val / 255); // Normalize to 0-1 range
     };
-
     setBackgroundColor(getBackgroundColor());
   }, [theme, resolvedTheme]);
-
   useEffect(() => {
     let curtains;
     let ripples;
     let renderPass;
-
     const initCurtains = async () => {
       console.log("Initializing Curtains");
-
       // Check for WebGL support
       const canvas = document.createElement("canvas");
       const gl =
@@ -61,20 +52,17 @@ const FluidBackground = forwardRef((props, ref) => {
         console.error("WebGL is not supported in this browser.");
         return;
       }
-
       try {
         const { Curtains, Vec2, PingPongPlane, ShaderPass } = await import(
           "curtainsjs"
         );
         console.log("Curtains library imported successfully");
-
         curtains = new Curtains({
           container: canvasRef.current,
           pixelRatio: Math.min(1.5, window.devicePixelRatio),
           alpha: true, // Enable alpha channel
         });
         console.log("Curtains instance created", curtains);
-
         const mouse = {
           last: new Vec2(),
           current: new Vec2(),
@@ -82,10 +70,8 @@ const FluidBackground = forwardRef((props, ref) => {
           updateVelocity: false,
           lastTime: null,
         };
-
         const curtainsBBox = curtains.getBoundingRect();
         console.log("Curtains bounding box", curtainsBBox);
-
         // Create ripples plane
         ripples = new PingPongPlane(curtains, canvasRef.current, {
           vertexShader: ripplesVs,
@@ -145,14 +131,12 @@ const FluidBackground = forwardRef((props, ref) => {
           },
         });
         console.log("Ripples plane created", ripples);
-
         ripples
           .onRender(() => {
             mouse.velocity.set(
               curtains.lerp(mouse.velocity.x, 0, 0.05),
               curtains.lerp(mouse.velocity.y, 0, 0.1)
             );
-
             ripples.uniforms.velocity.value = mouse.velocity.clone();
             ripples.uniforms.time.value++;
           })
@@ -163,7 +147,6 @@ const FluidBackground = forwardRef((props, ref) => {
               boundingRect.height
             );
           });
-
         // Render pass
         const renderPassUniforms = {
           resolution: {
@@ -191,18 +174,14 @@ const FluidBackground = forwardRef((props, ref) => {
             type: "3f",
             value: [46 / 255, 255 / 255, 130 / 255], // #2eff82 normalized to 0-1 range
           },
-          uThemeTransition: { value: 0 }, // Add this line
         };
-
         renderPass = new ShaderPass(curtains, {
-          vertexShader: renderVs,
           fragmentShader: renderFs,
           uniforms: renderPassUniforms,
           depth: false,
           transparent: true, // Enable transparency
         });
         renderPassRef.current = renderPass;
-
         renderPass.onAfterResize(() => {
           const boundingRect = renderPass.getBoundingRect();
           renderPass.uniforms.resolution.value.set(
@@ -210,12 +189,10 @@ const FluidBackground = forwardRef((props, ref) => {
             boundingRect.height
           );
         });
-
         renderPass.createTexture({
           sampler: "uRipplesTexture",
           fromTexture: ripples.getTexture(),
         });
-
         // Mouse move handler
         const onMouseMove = (e) => {
           if (ripples) {
@@ -223,14 +200,11 @@ const FluidBackground = forwardRef((props, ref) => {
               x: e.targetTouches ? e.targetTouches[0].clientX : e.clientX,
               y: e.targetTouches ? e.targetTouches[0].clientY : e.clientY,
             };
-
             mouse.last.copy(mouse.current);
             mouse.updateVelocity = true;
-
             if (!mouse.lastTime) {
               mouse.lastTime = (performance || Date).now();
             }
-
             if (
               mouse.last.x === 0 &&
               mouse.last.y === 0 &&
@@ -239,17 +213,13 @@ const FluidBackground = forwardRef((props, ref) => {
             ) {
               mouse.updateVelocity = false;
             }
-
             mouse.current.set(mousePos.x, mousePos.y);
-
             const webglCoords = ripples.mouseToPlaneCoords(mouse.current);
             ripples.uniforms.mousePosition.value = webglCoords;
-
             if (mouse.updateVelocity) {
               const time = (performance || Date).now();
               const delta = Math.max(14, time - mouse.lastTime);
               mouse.lastTime = time;
-
               mouse.velocity.set(
                 (mouse.current.x - mouse.last.x) / delta,
                 (mouse.current.y - mouse.last.y) / delta
@@ -257,12 +227,9 @@ const FluidBackground = forwardRef((props, ref) => {
             }
           }
         };
-
         window.addEventListener("mousemove", onMouseMove);
         window.addEventListener("touchmove", onMouseMove);
-
         console.log("Initialization complete");
-
         // Clean up function
         return () => {
           window.removeEventListener("mousemove", onMouseMove);
@@ -276,9 +243,7 @@ const FluidBackground = forwardRef((props, ref) => {
         console.error("Error initializing Curtains:", error);
       }
     };
-
     initCurtains();
-
     return () => {
       if (curtains) {
         console.log("Disposing Curtains");
@@ -286,43 +251,12 @@ const FluidBackground = forwardRef((props, ref) => {
       }
     };
   }, []);
-
   // Update background color when it changes
   useEffect(() => {
     if (renderPassRef.current) {
       renderPassRef.current.uniforms.bgColor.value = backgroundColor;
     }
   }, [backgroundColor]);
-
-  useEffect(() => {
-    let animationFrame;
-    const startTime = performance.now();
-    const duration = 500; // Transition duration in milliseconds
-
-    const animateTransition = (currentTime) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      transitionRef.current = progress;
-
-      if (
-        renderPassRef.current &&
-        renderPassRef.current.uniforms.uThemeTransition
-      ) {
-        renderPassRef.current.uniforms.uThemeTransition.value = progress;
-      }
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animateTransition);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(animateTransition);
-
-    return () => {
-      cancelAnimationFrame(animationFrame);
-    };
-  }, [theme]); // Run this effect when the theme changes
-
   console.log("Rendering FluidBackground component");
   return (
     <>
@@ -331,7 +265,5 @@ const FluidBackground = forwardRef((props, ref) => {
     </>
   );
 });
-
 FluidBackground.displayName = "FluidBackground";
-
 export default FluidBackground;
