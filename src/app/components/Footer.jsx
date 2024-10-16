@@ -54,14 +54,14 @@ const Footer = ({ isVisible }) => {
             for crafting immersive web experiences, I bring a blend of
             creativity and technical expertise to every project. Whether
             building dynamic user interfaces or integrating cutting-edge 3D
-            graphics, I strive to push the boundaries of what's possible on the
-            web. Don&apos;t hesitate to reach out if you have any questions or
-            just want to connect!
+            graphics, I strive to push the boundaries of what&apos;s possible on
+            the web. Don&apos;t hesitate to reach out if you have any questions
+            or just want to chat!
           </p>
         </div>
         <div className={styles.rightText}>
           <p>
-            I believe in the power of storytelling through design, and I'm
+            I believe in the power of storytelling through design, and I&apos;m
             dedicated to bringing your ideas to life in innovative ways that
             inspire and engage. I&apos;m always open to new opportunities and
             collaborations.
