@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/footer.module.css";
+import Marquee from "react-fast-marquee";
 
 const Footer = ({ isVisible }) => {
   const [shouldRender, setShouldRender] = useState(isVisible);
@@ -46,10 +47,14 @@ const Footer = ({ isVisible }) => {
         </div>
       </div>
       <div className={styles.content}>
-        <p className={styles.title}>Kirill Ginko</p>
-        <p className={styles.copyright}>
-          © {new Date().getFullYear()} Kirill.Studio. All rights reserved.
-        </p>
+        <Marquee gradient={false} speed={100}>
+          <p className={styles.title}>Kirill Ginko</p>
+          <p className={styles.title}>kirill@kirillginko.com</p>
+          <p className={styles.title}>New York, NY</p>
+          <p className={styles.title}>{new Date().toLocaleTimeString()}</p>
+          <p className={styles.copyright}>{new Date().getFullYear()}</p>
+          <p className={styles.copyright}>All rights reserved.</p>
+        </Marquee>
       </div>
     </footer>
   );

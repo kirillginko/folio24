@@ -87,15 +87,21 @@
   text-align: center;
   margin-bottom: 1rem;
   font-size: 0.8rem;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .title {
   font-size: 1rem;
   margin-bottom: 0.3rem;
+  display: inline-block;
+  padding: 0 20px;
 }
 
 .copyright {
   font-size: 0.3rem;
+  display: inline-block;
+  padding: 0 20px;
 }
 
 @media (min-width: 768px) {
@@ -161,13 +167,15 @@
   .content {
     grid-column: 1 / -1;
     grid-row: 3;
-    padding: 2rem 0.5rem 1rem;
-    margin-top: 2rem;
+    padding: 0.5rem 0.5rem 0.5rem;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    margin-top: 1rem;
+    margin-bottom: 1.9rem;
   }
 
   .title {
     font-size: 1.2rem;
-    margin-bottom: 0.5rem;
   }
 
   .copyright {
