@@ -23,31 +23,51 @@ const Footer = ({ isVisible }) => {
       <div className={styles.gridContainer}>
         <h1 className={styles.header}>Lets work together!</h1>
         <div className={styles.leftLinks}>
-          <p>kirill@kirillginko.com</p>
-          <p>+301 512 4249</p>
-          <p>Instagram</p>
-          <p>Github</p>
+          <p>
+            <a href="mailto:kirill@kirillginko.com">kirill@kirillginko.com</a>
+          </p>
+          <p>
+            <a href="tel:+3015124249">+301 512 4249</a>
+          </p>
+          <p>
+            <a
+              href="https://www.instagram.com/co_existenz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram
+            </a>
+          </p>
+          <p>
+            <a
+              href="https://github.com/kirillginko"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Github
+            </a>
+          </p>
         </div>
         <div className={styles.centerText}>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor sunt
-            quam ab tempora dolorum commodi repellendus, nihil provident officia
-            autem voluptates in corrupti accusamus similique obcaecati amet
-            blanditiis tempore odit suscipit exercitationem. Soluta magnam
-            molestiae laboriosam veniam. Temporibus sint dolores, at maiores,
-            recusandae dolor ad reiciendis iure quas aliquid totam.
+            Specializing in Next.js, React, Three.js, and WebGL. With a passion
+            for crafting immersive web experiences, I bring a blend of
+            creativity and technical expertise to every project. Whether
+            building dynamic user interfaces or integrating cutting-edge 3D
+            graphics, I strive to push the boundaries of what's possible on the
+            web. Let's create something amazing together!
           </p>
         </div>
         <div className={styles.rightText}>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis
-            porro ut sequi eius deserunt tempore et placeat, minima veritatis
-            consequuntur eos autem corrupti?
+            I believe in the power of storytelling through design, and I'm
+            dedicated to bringing your ideas to life in innovative ways that
+            inspire and engage.
           </p>
         </div>
       </div>
       <div className={styles.content}>
-        <Marquee gradient={false} speed={100}>
+        <Marquee gradient={false} speed={50}>
           <p className={styles.title}>Kirill Ginko</p>
           <p className={styles.title}>kirill@kirillginko.com</p>
           <p className={styles.title}>New York, NY</p>

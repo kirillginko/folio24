@@ -38,7 +38,7 @@
   -webkit-mask-size: cover;
   -webkit-mask-position: center top;
   width: 100%;
-  height: 385px;
+  height: 435px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -47,6 +47,7 @@
   left: 0;
   transform: translateY(100%);
   transition: none;
+  z-index: 2;
 }
 
 .footerVisible {
@@ -65,15 +66,35 @@
 }
 
 .header {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.leftLinks,
+.centerText,
+.rightText {
+  margin-bottom: 1rem;
 }
 
 .leftLinks p {
   color: var(--highlight-color);
-  margin-bottom: 0.3rem;
   font-size: 0.9rem;
-  margin-left: 2.5rem;
+  text-align: center;
+  transition: color 0.2s ease;
+}
+
+.leftLinks p:hover {
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.centerText,
+.rightText {
+  text-align: center;
+  text-align: justify;
+  text-align-last: justify;
+  /* text-wrap: balance; */
 }
 
 .leftLinks p,
@@ -81,6 +102,8 @@
 .rightText p {
   margin-bottom: 0.3rem;
   font-size: 0.8rem;
+  text-decoration: none;
+  text-wrap: balance;
 }
 
 .content {
@@ -89,6 +112,9 @@
   font-size: 0.8rem;
   overflow: hidden;
   white-space: nowrap;
+  padding: 0.5rem 0;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
 }
 
 .title {
@@ -99,12 +125,15 @@
 }
 
 .copyright {
-  font-size: 0.3rem;
+  font-size: 0.7rem;
   display: inline-block;
   padding: 0 20px;
 }
 
 @media (min-width: 768px) {
+  .footer {
+    height: 445px;
+  }
   .gridContainer {
     gap: 1.5rem;
     padding: 1.5rem;
@@ -115,10 +144,12 @@
   }
 
   .leftLinks {
+    text-align: center;
   }
 
   .leftLinks p {
     font-size: 1rem;
+    text-align: center;
   }
 
   .leftLinks p,
@@ -128,12 +159,24 @@
   }
 
   .content {
-    padding: 1.5rem 0.5rem;
-    margin-top: 1.5rem;
+    padding: 0.75rem 0;
+    margin-top: 1rem;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
   }
 }
 
 @media (min-width: 1024px) {
+  .footer {
+    height: 385px;
+  }
+
   .gridContainer {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -152,6 +195,8 @@
   .leftLinks {
     grid-column: 1;
     grid-row: 2;
+    text-align: left;
+    margin-left: 3rem;
   }
 
   .centerText {
@@ -168,10 +213,10 @@
     grid-column: 1 / -1;
     grid-row: 3;
     padding: 0.5rem 0.5rem 0.5rem;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
     margin-top: 1rem;
     margin-bottom: 1.9rem;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
   }
 
   .title {
@@ -184,10 +229,15 @@
 
   .leftLinks p {
     font-size: 1rem;
+    text-align: left;
   }
 
   .centerText p,
   .rightText p {
     font-size: 0.9rem;
+    text-align: justify;
+    text-align-last: justify;
+    text-wrap: balance;
+    line-height: 1.2;
   }
 }

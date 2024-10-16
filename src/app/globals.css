@@ -1,9 +1,9 @@
 :root {
   --theme-transition-duration: 0.6s;
   /* Light theme variables */
-  --background-light: #b67876;
+  --background-light: #f0f0f0;
   --foreground-light: #171717;
-  --background-color-light: #af6f6d;
+  --background-color-light: #f0f0f0;
   --text-color-light: #fbe6e1;
   --h2-color-light: #e37b3c;
   --h1-color-light: #ebb546;
@@ -56,4 +56,8 @@ body {
     color var(--theme-transition-duration) ease,
     border-color var(--theme-transition-duration) ease,
     box-shadow var(--theme-transition-duration) ease;
+}
+a {
+  text-decoration: none;
+  color: inherit;
 }
