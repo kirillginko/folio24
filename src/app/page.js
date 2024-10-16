@@ -6,6 +6,7 @@ import Theme from "./components/theme/Theme";
 import Header from "./components/Header";
 import NoiseBackground from "./components/noise/NoiseBackground";
 import Fluid from "./components/fluid/Fluid";
+import GridMain from "./components/grid/GridMain";
 import Footer from "./components/Footer";
 import React from "react";
 
@@ -31,8 +32,8 @@ export default function Home() {
       <Fluid theme={resolvedTheme} />
       <main className={styles.contentWrap}>
         <Theme />
-        <Header />
         <NoiseBackground />
+        <GridMain />
       </main>
       <Footer isVisible={isFooterVisible} />
       <button

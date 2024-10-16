@@ -1,0 +1,112 @@
+.gridContainer {
+  --grids-per-row: 4;
+  --wrapper-width: 100vw;
+  --grid-width: calc(100vw / var(--grids-per-row));
+
+  display: grid;
+  grid-template-columns: repeat(var(--grids-per-row), 1fr);
+  max-width: var(--wrapper-width);
+  margin: 0 auto;
+  border: 1px solid #000;
+  border-bottom: none;
+  border-right: none;
+}
+
+.gridItem {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 150px;
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+  position: relative;
+}
+
+.gridItem {
+  transition: background-color 0.3s ease;
+}
+
+.gridItem:hover {
+  background-color: rgba(255, 182, 193, 0.3);
+}
+
+.gridItem:hover p {
+  font-weight: bold;
+}
+
+.gridItem::before,
+.gridItem::after,
+.gridItem > *:last-child::before,
+.gridItem > *:last-child::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #000;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.gridItem::before {
+  top: -3px;
+  left: -3px;
+}
+
+.gridItem::after {
+  top: -3px;
+  right: -3px;
+}
+
+.gridItem > *:last-child::before {
+  bottom: -3px;
+  left: -3px;
+}
+
+.gridItem > *:last-child::after {
+  bottom: -3px;
+  right: -3px;
+}
+.typeContainer {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.type {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #000;
+}
+
+/* Add styles for the header section */
+.header {
+  grid-column: 1 / -1; /* Span all columns */
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  font-family: monospace;
+  border-bottom: 1px solid #000; /* Add bottom border to header */
+}
+
+.title {
+  font-weight: bold;
+}
+
+.title h1 {
+  letter-spacing: 0.1em;
+  font-size: 1.5em;
+  margin: 0; /* Remove default margin */
+}
+
+.viewByType {
+  display: flex;
+  gap: 20px;
+}
+
+.typeDefinition {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

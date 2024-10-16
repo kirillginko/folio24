@@ -76,6 +76,21 @@ const Footer = ({ isVisible }) => {
           <p className={styles.title}>{new Date().toLocaleTimeString()}</p>
           <p className={styles.copyright}>{new Date().getFullYear()}</p>
           <p className={styles.copyright}>All rights reserved.</p>
+          <p className={styles.copyright}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M22.6337 1.63323L1.63348 22.6335M1.63348 22.6335L18.8978 22.6335M1.63348 24.1311L1.63348 5.3692" />
+            </svg>
+          </p>
         </Marquee>
       </div>
     </footer>
