@@ -103,6 +103,7 @@ export const renderFs = `
   uniform float uSaturation;
   uniform vec3 uBgColor;
   uniform vec3 uRippleColor;
+  uniform float uThemeTransition;
 
   #define PI 3.14159265359
 
@@ -201,6 +202,9 @@ export const renderFs = `
     ripples += reflections * 0.5;
 
     vec4 color = vec4(uBgColor, 1.0);
+
+    // Interpolate between the current color and the background color
+    color.rgb = mix(color.rgb, uBgColor, uThemeTransition);
 
     float lights = max(0.001, ripples.r - (0.7 + lightStrength * 0.025));
     float shadow = max(0.001, 1.0 - (ripples.r + 0.5));

@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import dynamic from "next/dynamic";
 import styles from "../../styles/fluid.module.css";
-import { ripplesVs, ripplesFs, renderFs } from "./Shaders";
+import { ripplesVs, ripplesFs, renderFs, renderVs } from "./Shaders";
 import { useTheme } from "next-themes";
 
 const Curtains = dynamic(() => import("curtainsjs"), { ssr: false });
@@ -17,6 +17,7 @@ const FluidBackground = forwardRef((props, ref) => {
   const renderPassRef = useRef(null);
   const { theme, resolvedTheme } = useTheme();
   const [backgroundColor, setBackgroundColor] = useState([0, 0, 0]);
+  const transitionRef = useRef(0);
 
   useImperativeHandle(ref, () => ({
     changeRippleColor: (r, g, b) => {
@@ -190,9 +191,11 @@ const FluidBackground = forwardRef((props, ref) => {
             type: "3f",
             value: [46 / 255, 255 / 255, 130 / 255], // #2eff82 normalized to 0-1 range
           },
+          uThemeTransition: { value: 0 }, // Add this line
         };
 
         renderPass = new ShaderPass(curtains, {
+          vertexShader: renderVs,
           fragmentShader: renderFs,
           uniforms: renderPassUniforms,
           depth: false,
@@ -290,6 +293,35 @@ const FluidBackground = forwardRef((props, ref) => {
       renderPassRef.current.uniforms.bgColor.value = backgroundColor;
     }
   }, [backgroundColor]);
+
+  useEffect(() => {
+    let animationFrame;
+    const startTime = performance.now();
+    const duration = 500; // Transition duration in milliseconds
+
+    const animateTransition = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      transitionRef.current = progress;
+
+      if (
+        renderPassRef.current &&
+        renderPassRef.current.uniforms.uThemeTransition
+      ) {
+        renderPassRef.current.uniforms.uThemeTransition.value = progress;
+      }
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animateTransition);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animateTransition);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+    };
+  }, [theme]); // Run this effect when the theme changes
 
   console.log("Rendering FluidBackground component");
   return (
