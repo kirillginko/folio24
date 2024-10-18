@@ -3,6 +3,7 @@ import styles from "../../styles/gridlayout.module.css";
 import LeftColumn from "./LeftColumn"; // Import the LeftColumn component
 // Import the TopNav component
 import TopNav from "./TopNav";
+import BottomNav from "./BottomNav"; // Import the BottomNav component
 
 const GridLayout = ({ children }) => {
   return (
@@ -19,6 +20,7 @@ const GridLayout = ({ children }) => {
           ))}
         </div>
       </div>
+      <BottomNav /> {/* Add the BottomNav component here */}
     </div>
   );
 };

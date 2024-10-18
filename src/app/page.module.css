@@ -42,7 +42,6 @@
 
 .contentWrap {
   flex: 1 0 auto;
-  padding-bottom: 60px;
   position: relative;
   z-index: 2; /* Space for the toggle button */
 }

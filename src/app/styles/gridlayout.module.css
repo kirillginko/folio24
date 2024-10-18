@@ -9,13 +9,24 @@
 .topNav {
   width: 100%;
   padding: 1rem;
-  background-color: #333;
+
   color: white;
   border: 1px solid var(--border-color);
   border-bottom: none; /* Remove bottom border to avoid double border */
   border-radius: 10px 10px 0 0;
   box-sizing: border-box;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bottomNav {
+  width: 100%;
+  padding: 1rem;
+  color: white;
+  border: 1px solid var(--border-color);
+  border-radius: 10px 10px 10px 10px; /* Rounded corners at the bottom */
+  box-sizing: border-box;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Inverted shadow for bottom */
+  margin-top: -1px; /* Overlap the border by 1px to make it flush */
 }
 
 .contentContainer {
@@ -30,8 +41,8 @@
   width: 275px;
   padding: 20px;
   border: 1px solid var(--border-color);
-  border-top: none; /* Remove top border to avoid double border */
-  border-radius: 10px; /* Consistent border radius */
+  border-top: none;
+  border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
   overflow: hidden;
@@ -102,19 +113,19 @@
 }
 
 .gridItemWrapper:hover {
-  background-color: rgba(240, 240, 240, 0.3); /* Low opacity hover color */
+  background-color: rgba(240, 240, 240, 0.3);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .gridItem {
-  padding: 20px; /* Adjust padding as needed */
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Distribute space between items */
-  align-items: flex-start; /* Align items to the start */
+  justify-content: space-between;
+  align-items: flex-start;
   height: 100%;
   box-sizing: border-box;
-  gap: 10px; /* Add gap between elements inside the grid item */
+  gap: 10px;
 }
 .gridItem p {
   font-size: 0.8em;
@@ -143,9 +154,9 @@
 
   .leftColumn {
     width: 100%;
-    border-radius: 10px; /* Ensure border radius is visible */
-    margin-bottom: 0; /* Remove margin to sit flush */
-    border-bottom: none; /* Remove bottom border to avoid double border */
+    border-radius: 10px;
+    margin-bottom: 0;
+    border-bottom: none;
   }
 
   .gridContainer {
@@ -155,17 +166,17 @@
 
   .gridItemWrapper {
     width: 100%;
-    margin: 0; /* Remove margin to sit flush */
-    border-radius: 10px; /* Ensure border radius is visible */
-    border-top: none; /* Remove top border to avoid double border */
+    margin: 0;
+    border-radius: 10px;
+    border-top: none;
   }
 
   .gridItemWrapper:first-child {
-    border-top: 1px solid var(--border-color); /* Add top border to the first item */
+    border-top: 1px solid var(--border-color);
   }
 
   .gridItem {
-    min-height: 200px; /* Adjust this value to increase height */
+    min-height: 200px;
     width: 100%;
   }
 }
