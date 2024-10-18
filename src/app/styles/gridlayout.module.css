@@ -1,20 +1,46 @@
 .mainContainer {
   display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   width: 100%;
-  font-family: monospace;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
+  overflow-x: hidden;
+}
+
+.topNav {
+  width: 100%;
+  padding: 1rem;
+  background-color: #333;
+  color: white;
+  border: 1px solid var(--border-color);
+  border-bottom: none; /* Remove bottom border to avoid double border */
+  border-radius: 10px 10px 0 0;
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.contentContainer {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .leftColumn {
   width: 275px;
   padding: 20px;
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-  border-left: 1px solid var(--border-color);
-  border-right: 1.5px solid var(--border-color);
-  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  border-top: none; /* Remove top border to avoid double border */
+  border-radius: 10px; /* Consistent border radius */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.leftColumn:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .leftColumnContent {
@@ -61,18 +87,23 @@
   flex: 1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  overflow: auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .gridItemWrapper {
   border: 1px solid var(--border-color);
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
   border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: -1px 0 0 -1px;
+  box-sizing: border-box;
 }
 
 .gridItemWrapper:hover {
-  background-color: var(--gray-alpha-100);
+  background-color: rgba(240, 240, 240, 0.3); /* Low opacity hover color */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .gridItem {
@@ -81,6 +112,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  box-sizing: border-box;
 }
 
 .projectTitle {
@@ -100,31 +132,35 @@
 }
 
 @media (max-width: 600px) {
-  .mainContainer {
+  .contentContainer {
     flex-direction: column;
-    height: auto;
-    overflow-y: visible;
   }
 
   .leftColumn {
     width: 100%;
-    border-right: none;
-    border-bottom: 1px solid var(--border-color);
+    border-radius: 10px; /* Ensure border radius is visible */
+    margin-bottom: 0; /* Remove margin to sit flush */
+    border-bottom: none; /* Remove bottom border to avoid double border */
   }
 
   .gridContainer {
     display: flex;
     flex-direction: column;
-    height: auto;
   }
 
   .gridItemWrapper {
     width: 100%;
-    border: none;
-    border-bottom: 1px solid var(--border-color);
+    margin: 0; /* Remove margin to sit flush */
+    border-radius: 10px; /* Ensure border radius is visible */
+    border-top: none; /* Remove top border to avoid double border */
+  }
+
+  .gridItemWrapper:first-child {
+    border-top: 1px solid var(--border-color); /* Add top border to the first item */
   }
 
   .gridItem {
-    min-height: 150px; /* Adjust as needed */
+    min-height: 200px; /* Adjust this value to increase height */
+    width: 100%;
   }
 }

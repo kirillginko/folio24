@@ -1,0 +1,30 @@
+.topNav {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  box-sizing: border-box;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.topNav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.topNav li {
+  margin-right: 1rem;
+}
+
+.topNav a {
+  color: white;
+  text-decoration: none;
+}
+
+#__next {
+  max-width: 100vw;
+  overflow-x: hidden;
+}

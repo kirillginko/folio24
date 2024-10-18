@@ -1,7 +1,7 @@
 :root {
   --theme-transition-duration: 0.6s;
   /* Light theme variables */
-  --background-light: #f0f0f0;
+  --background-light: #f9f9f9;
   --foreground-light: #171717;
   --background-color-light: #f0f0f0;
   --text-color-light: #fbe6e1;
@@ -11,7 +11,7 @@
   --border-color-light: #000;
 
   /* Dark theme variables */
-  --background-dark: #0a0a0a;
+  --background-dark: #2a2a2a;
   --foreground-dark: #fbe6e1;
   --background-color-dark: #0a0a0a;
   --text-color-dark: #fbe6e1;
