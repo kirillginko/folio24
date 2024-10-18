@@ -9,30 +9,30 @@ const LeftColumn = () => {
         <div className={styles.viewByType}>
           <h2>VIEW BY TYPE</h2>
           <ul>
-            <li>
+            <p>
               <span className={styles.type}>W</span> WEBSITES
-            </li>
-            <li>
+            </p>
+            <p>
               <span className={styles.type}>EC</span> E-COMMERCE
-            </li>
-            <li>
+            </p>
+            <p>
               <span className={styles.type}>IN</span> INSTALLATIONS
-            </li>
-            <li>
+            </p>
+            <p>
               <span className={styles.type}>EX</span> EXHIBITIONS
-            </li>
-            <li>
+            </p>
+            <p>
               <span className={styles.type}>PF</span> PORTFOLIO
-            </li>
-            <li>
+            </p>
+            <p>
               <span className={styles.type}>MG</span> MOTION GRAPHICS
-            </li>
-            <li>
+            </p>
+            <p>
               <span className={styles.type}>D</span> DESIGN / CONCEPT
-            </li>
-            <li>
+            </p>
+            <p>
               <span className={styles.type}>DV</span> DEVELOPMENT
-            </li>
+            </p>
           </ul>
         </div>
       </div>

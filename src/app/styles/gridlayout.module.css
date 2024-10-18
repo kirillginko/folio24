@@ -107,12 +107,17 @@
 }
 
 .gridItem {
-  padding: 20px;
+  padding: 20px; /* Adjust padding as needed */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; /* Distribute space between items */
+  align-items: flex-start; /* Align items to the start */
   height: 100%;
   box-sizing: border-box;
+  gap: 10px; /* Add gap between elements inside the grid item */
+}
+.gridItem p {
+  font-size: 0.8em;
 }
 
 .projectTitle {
