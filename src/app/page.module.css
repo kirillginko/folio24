@@ -16,9 +16,6 @@
 
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  position: relative;
-  min-height: 100vh;
 }
 
 .pageContainer h1 {
@@ -94,4 +91,12 @@
 /* Add this if you're using Font Awesome or similar icon libraries */
 .toggleButton i {
   line-height: 0;
+}
+
+@media (max-width: 600px) {
+  .pageContainer {
+    height: auto;
+    min-height: 100svh;
+    overflow-y: auto;
+  }
 }

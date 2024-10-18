@@ -1,23 +1,19 @@
 import React from "react";
 import styles from "../../styles/gridlayout.module.css";
+import LeftColumn from "./LeftColumn"; // Import the LeftColumn component
 
 const GridLayout = ({ children }) => {
   return (
-    <div className={styles.gridContainer}>
-      <div className={styles.header}>
-        <div className={styles.title}>
-          <h1>Kirill Ginko</h1>
-        </div>
-        <div className={styles.viewByType}>
-          <div>VIEW BY TYPE</div>
-          <div className={styles.typeDefinition}>
-            <span>W</span>
-            <span>WEBSITES</span>
+    <div className={styles.mainContainer}>
+      <LeftColumn /> {/* Add the LeftColumn component here */}
+      <div className={styles.gridContainer}>
+        {React.Children.map(children, (child) => (
+          <div className={styles.gridItemWrapper}>
+            <div className={styles.gridItemBorder}></div>
+            <div className={styles.gridItemContent}>{child}</div>
           </div>
-          {/* Add more type definitions here */}
-        </div>
+        ))}
       </div>
-      {children}
     </div>
   );
 };

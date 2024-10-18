@@ -16,7 +16,6 @@ const GridMain = () => {
     { title: "JIWOO MOON", types: ["W", "PF", "D", "DV"] },
     { title: "SNAKEPOOL / LEE KANGHYUK", types: ["W", "PF", "D", "DV"] },
     { title: "STATE OF MOTION 2021", types: ["W", "DV"] },
-    { title: "GYRE - KOREAN PAVILION", types: ["W", "D", "DV"] },
     // Add more items as needed
   ];
 

@@ -8,6 +8,7 @@
   --h2-color-light: #e37b3c;
   --h1-color-light: #ebb546;
   --highlight-color-light: #0a0a0a;
+  --border-color-light: #000;
 
   /* Dark theme variables */
   --background-dark: #0a0a0a;
@@ -16,6 +17,7 @@
   --text-color-dark: #fbe6e1;
   --h2-color-dark: #2eff82;
   --highlight-color-dark: #2eff82;
+  --border-color-dark: #fff;
 }
 
 /* Light theme */
@@ -27,6 +29,7 @@
   --h2-color: var(--h2-color-light);
   --h1-color: var(--h1-color-light);
   --highlight-color: var(--highlight-color-light);
+  --border-color: var(--border-color-light);
 }
 
 /* Dark theme */
@@ -37,6 +40,7 @@
   --text-color: var(--text-color-dark);
   --h2-color: var(--h2-color-dark);
   --highlight-color: var(--highlight-color-dark);
+  --border-color: var(--border-color-dark);
 }
 
 * {
@@ -47,6 +51,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   overflow-x: hidden;
+  min-height: 100vh; /* Ensure the body is at least as tall as the viewport */
 }
 
 *,
