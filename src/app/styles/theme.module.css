@@ -1,7 +1,7 @@
 .themeToggleContainer {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 6px;
+  right: 10px;
   z-index: 1000;
 }
 

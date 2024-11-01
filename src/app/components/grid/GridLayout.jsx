@@ -13,14 +13,11 @@ const GridLayout = ({ children }) => {
         <LeftColumn />
         <div className={styles.gridContainer}>
           {React.Children.map(children, (child) => (
-            <div className={styles.gridItemWrapper}>
-              <div className={styles.gridItemBorder}></div>
-              <div className={styles.gridItemContent}>{child}</div>
-            </div>
+            <div className={styles.gridItemWrapper}>{child}</div>
           ))}
         </div>
       </div>
-      <BottomNav /> {/* Add the BottomNav component here */}
+      <BottomNav />
     </div>
   );
 };

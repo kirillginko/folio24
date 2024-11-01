@@ -50,7 +50,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   min-height: 100vh; /* Ensure the body is at least as tall as the viewport */
 }
 

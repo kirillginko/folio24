@@ -162,7 +162,7 @@ const FluidBackground = forwardRef((props, ref) => {
           saturation: {
             name: "uSaturation",
             type: "1f",
-            value: 1,
+            value: 5,
           },
           bgColor: {
             name: "uBgColor",
