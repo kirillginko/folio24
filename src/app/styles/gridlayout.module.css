@@ -46,7 +46,6 @@
   border: 1px solid var(--border-color);
   border-top: none;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
   overflow: hidden;
   box-sizing: border-box;
@@ -168,11 +167,11 @@
   }
 
   .gridItemWrapper {
-    border-left: none;
     border-radius: 10px;
     min-height: 300px;
-    margin: 0;
-    box-sizing: border-box;
+    margin-top: -1px;
+    margin-left: -1px;
+    border: 1px solid var(--border-color);
   }
   .gridItem {
   }
@@ -202,23 +201,27 @@
   }
 
   .leftColumn {
-    width: 100%;
+    width: calc(100% - 20px);
+    margin: 0 10px;
+    border: 1px solid var(--border-color);
+    margin-top: -1px;
   }
 
   .gridContainer {
     grid-template-columns: 1fr;
     padding-right: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: -1px;
   }
 
   .gridItemWrapper {
     width: 100%;
   }
-
-  .leftColumn {
-    width: 100%;
-    /* border-radius: 10px; */
-    margin-bottom: 0;
-    border-bottom: none;
+  .bottomNav {
+    width: calc(100% - 20px);
+    margin: 0 10px;
+    margin-top: -1px;
   }
 
   .gridContainer {

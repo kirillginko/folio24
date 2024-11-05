@@ -1,9 +1,8 @@
 :root {
   --theme-transition-duration: 0.6s;
   /* Light theme variables */
-  --background-light: #f9f9f9;
+  --background-light: #faf7f3
   --foreground-light: #171717;
-  --background-color-light: #f0f0f0;
   --text-color-light: #fbe6e1;
   --h2-color-light: #e37b3c;
   --h1-color-light: #ebb546;
@@ -15,9 +14,10 @@
   --foreground-dark: #fbe6e1;
   --background-color-dark: #0a0a0a;
   --text-color-dark: #fbe6e1;
+  --h1-color-light: #ebb546;
   --h2-color-dark: #2eff82;
   --highlight-color-dark: #2eff82;
-  --border-color-dark: #fff;
+  --border-color-dark: #fbe6e1;
 }
 
 /* Light theme */
@@ -38,6 +38,7 @@
   --foreground: var(--foreground-dark);
   --background-color: var(--background-color-dark);
   --text-color: var(--text-color-dark);
+  --h1-color: var(--h1-color-dark);
   --h2-color: var(--h2-color-dark);
   --highlight-color: var(--highlight-color-dark);
   --border-color: var(--border-color-dark);
